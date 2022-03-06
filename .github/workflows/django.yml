@@ -26,7 +26,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: setup env
-        env:
+      env:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
 
     - name: Run Tests
