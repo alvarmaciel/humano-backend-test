@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from producto.models import Producto
 from taggit.managers import TaggableManager
-from socies.models import Socie, Tienda
+from socies.models import Socie
 
 
 class Venta(models.Model):
@@ -48,7 +48,6 @@ class Venta(models.Model):
         return 'cliente "%s" nro venta "%s"' % (self.socie, self.id)
 
 
-
 class ItemVenta(models.Model):
     venta = models.ForeignKey(Venta, related_name="items", on_delete=models.CASCADE)
     producto = models.ForeignKey(
@@ -60,7 +59,6 @@ class ItemVenta(models.Model):
 
     def __str__(self):
         return "venta %s prducto %s item %s" % (self.venta.id, self.producto, self.id)
-
 
 
 class NotaCredito(models.Model):
