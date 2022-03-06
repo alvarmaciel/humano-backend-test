@@ -1,6 +1,6 @@
 from django.db.models import fields
 from rest_framework import serializers
-from .models import Socie, Tienda
+from .models import Socie
 from producto.models import Producto
 from producto.serializers import ProductoSerializer
 
