@@ -65,7 +65,7 @@ class Socie(models.Model):
     activo = models.BooleanField(default=True)
     proveedor = models.BooleanField(default=False, null=True, blank=True)
     humane = models.BooleanField(default=True, null=True, blank=True)
-    tiendas = models.ManyToManyField(Tienda, blank=False, related_name="tienda")
+    #    tiendas = models.ManyToManyField(Tienda, blank=False, related_name="tienda")
 
     # class Meta:
     #     abstract = True
