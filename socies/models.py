@@ -6,20 +6,20 @@ from django.db import models
 # Create your models here.
 
 
-class Tienda(models.Model):
-    nombre = models.CharField(
-        max_length=50,
-        blank=True,
-        null=True,
-    )
-    email = models.CharField(
-        max_length=254,
-        null=True,
-        blank=True,
-    )
+# class Tienda(models.Model):
+#     nombre = models.CharField(
+#         max_length=50,
+#         blank=True,
+#         null=True,
+#     )
+#     email = models.CharField(
+#         max_length=254,
+#         null=True,
+#         blank=True,
+#     )
 
-    def __str__(self):
-        return self.nombre
+#     def __str__(self):
+#         return self.nombre
 
 
 class Socie(models.Model):
@@ -78,4 +78,3 @@ class Socie(models.Model):
 
     class Meta:
         ordering = ("codigo",)
-
