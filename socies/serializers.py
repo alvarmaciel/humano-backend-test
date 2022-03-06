@@ -5,19 +5,18 @@ from producto.models import Producto
 from producto.serializers import ProductoSerializer
 
 
-class TiendaSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Tienda
-        fields = [
-            "id",
-            "nombre",
-            "email",
-        ]
+# class TiendaSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Tienda
+#         fields = [
+#             "id",
+#             "nombre",
+#             "email",
+#         ]
 
 
 class SocieSerializar(serializers.ModelSerializer):
     productos = ProductoSerializer(source="socie", many=True, read_only=True)
-    # tiendas = TiendaSerializer(many=True)
 
     class Meta:
         model = Socie
@@ -40,4 +39,3 @@ class SocieSerializar(serializers.ModelSerializer):
             "humane",
         ]
         depth = 1
-

@@ -51,9 +51,9 @@ class SociesViewSet(viewsets.ModelViewSet):
         )
         nuevo_socie.save()
 
-        for tienda in data["tiendas"]:
-            tienda_object = Tienda.objects.get(nombre=tienda["nombre"])
-            nuevo_socie.tiendas.add(tienda_object)
+        # for tienda in data["tiendas"]:
+        #     tienda_object = Tienda.objects.get(nombre=tienda["nombre"])
+        #     nuevo_socie.tiendas.add(tienda_object)
 
         serializers = SocieSerializar(nuevo_socie)
 
@@ -78,9 +78,9 @@ class SociesViewSet(viewsets.ModelViewSet):
         socie_object.humane = data["humane"]
         socie_object.tiendas.set("")
 
-        for tienda in data["tiendas"]:
-            nueva_tienda = Tienda.objects.get(nombre=tienda["nombre"])
-            socie_object.tiendas.add(nueva_tienda)
+        # for tienda in data["tiendas"]:
+        #     nueva_tienda = Tienda.objects.get(nombre=tienda["nombre"])
+        #     socie_object.tiendas.add(nueva_tienda)
 
         socie_object.save()
         serializers = SocieSerializar(socie_object)
@@ -91,14 +91,14 @@ class SociesViewSet(viewsets.ModelViewSet):
         socie_object = self.get_object()
         data = request.data
 
-        try:
-            if request.data.get("tiendas"):
-                socie_object.tiendas.set("")
-                for tienda in data["tiendas"]:
-                    nueva_tienda = Tienda.objects.get(nombre=tienda["nombre"])
-                    socie_object.tiendas.add(nueva_tienda)
-        except KeyError:
-            pass
+        # try:
+        #     if request.data.get("tiendas"):
+        #         socie_object.tiendas.set("")
+        #         for tienda in data["tiendas"]:
+        #             nueva_tienda = Tienda.objects.get(nombre=tienda["nombre"])
+        #             socie_object.tiendas.add(nueva_tienda)
+        # except KeyError:
+        #     pass
 
         socie_object.codigo = data.get("codigo", socie_object.codigo)
         socie_object.nombre = data.get("nombre", socie_object.nombre)
@@ -124,25 +124,25 @@ class SociesViewSet(viewsets.ModelViewSet):
         return Response(serializers.data)
 
 
-class TiendaViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint para ver y editar por humane
-    """
+# class TiendaViewSet(viewsets.ModelViewSet):
+#     """
+#     API endpoint para ver y editar por humane
+#     """
 
-    serializer_class = TiendaSerializer
-    # permission_classes = [permissions.IsAuthenticated]
+#     serializer_class = TiendaSerializer
+#     # permission_classes = [permissions.IsAuthenticated]
 
-    def get_queryset(self):
-        queryset = Tienda.objects.all()
-        return queryset
+#     def get_queryset(self):
+#         queryset = Tienda.objects.all()
+#         return queryset
 
-    def retrieve(self, request, *args, **kwargs):
-        params = kwargs
-        tienda = Tienda.objects.filter(id=params["pk"])
-        serializer = TiendaSerializer(tienda, many=True)
-        serializer = serializer.data[0]
-        # serializer = serializer.data[0]
-        return Response(serializer)
+#     def retrieve(self, request, *args, **kwargs):
+#         params = kwargs
+#         tienda = Tienda.objects.filter(id=params["pk"])
+#         serializer = TiendaSerializer(tienda, many=True)
+#         serializer = serializer.data[0]
+#         # serializer = serializer.data[0]
+#         return Response(serializer)
 
 
 # class ProveedoresViewSet(viewsets.ModelViewSet):
