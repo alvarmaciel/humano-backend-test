@@ -9,7 +9,7 @@ from rest_framework import permissions
 from rest_framework import status
 
 from .models import Tienda, Socie
-from .serializers import TiendaSerializer, SocieSerializar
+from .serializers import SocieSerializar
 
 
 class SociesViewSet(viewsets.ModelViewSet):
