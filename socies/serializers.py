@@ -32,7 +32,6 @@ class SocieSerializar(serializers.ModelSerializer):
             "telefono",
             "domicilio",
             "codigo_postal",
-            "tiendas",
             "productos",
             "activo",
             "proveedor",
