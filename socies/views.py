@@ -8,7 +8,7 @@ from rest_framework import viewsets
 from rest_framework import permissions
 from rest_framework import status
 
-from .models import Tienda, Socie
+from .models import Socie
 from .serializers import SocieSerializar
 
 
@@ -76,7 +76,7 @@ class SociesViewSet(viewsets.ModelViewSet):
         socie_object.activo = data["activo"]
         socie_object.proveedor = data["proveedor"]
         socie_object.humane = data["humane"]
-        socie_object.tiendas.set("")
+        #        socie_object.tiendas.set("")
 
         # for tienda in data["tiendas"]:
         #     nueva_tienda = Tienda.objects.get(nombre=tienda["nombre"])
