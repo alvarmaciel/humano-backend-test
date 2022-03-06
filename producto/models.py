@@ -1,7 +1,7 @@
 from django.db import models
 from taggit.managers import TaggableManager
 from taggit.models import TaggedItemBase
-from socies.models import Socie, Tienda
+from socies.models import Socie
 
 # Create your models here.
 
@@ -61,7 +61,6 @@ class Producto(models.Model):
             return nombre
         else:
             return {}
-
 
     def nombre_producto(self):
         if self.tipo is not None:
