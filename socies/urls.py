@@ -5,7 +5,9 @@ from socies import views
 
 router = routers.DefaultRouter()
 router.register(r"socies", views.SociesViewSet, basename="socies")
-# router.register(r"tiendas", views.TiendaViewSet, basename="tienda")
+# router.register(r"proveedores", views.ProveedoresViewSet, basename="proveedores")
+# router.register(r"general", views.HumanesGeneralViewSet, basename="general")
+router.register(r"tiendas", views.TiendaViewSet, basename="tienda")
 
 urlpatterns = [
     path("", include(router.urls)),

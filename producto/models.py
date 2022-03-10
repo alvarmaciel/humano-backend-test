@@ -1,7 +1,7 @@
 from django.db import models
 from taggit.managers import TaggableManager
 from taggit.models import TaggedItemBase
-from socies.models import Socie
+from socies.models import Socie, Tienda
 
 # Create your models here.
 
@@ -22,6 +22,13 @@ class UnidadDeMedida(models.Model):
 
 
 class Producto(models.Model):
+    # proveedor_id = models.ForeignKey(
+    #     Proveedor,
+    #     related_name="proveedores",
+    #     on_delete=models.CASCADE,
+    #     null=True,
+    #     blank=True,
+    # )
     socie = models.ForeignKey(
         Socie,
         related_name="socie",
@@ -61,6 +68,12 @@ class Producto(models.Model):
             return nombre
         else:
             return {}
+
+    # def proveedor(self):
+    #     if self.proveedor_id is not None:
+    #         return self.proveedor_id.id
+    #     else:
+    #         return {}
 
     def nombre_producto(self):
         if self.tipo is not None:

@@ -16,8 +16,8 @@ class ItemVentaSerializer(serializers.ModelSerializer):
         fields = [
             "venta",
             "producto",
-            "sub_total",
             "cantidad",
+            "parcial",
             "devolucion",
         ]
 
@@ -36,14 +36,21 @@ class VentaSerializer(serializers.ModelSerializer):
             "cajere",
             "creado_el",
             "socie",
-            #            "socie_humane",
+            # "socie_humane",
             "tipo_de_venta",
             "forma_de_pago",
-            "bonificacion",
             "items_en_venta",
-            "monto_pago",
+            "bonificacion",
+            "recargo",
+            "monto_total",
         ]
 
+
+# class ItemVentaSerializer(FlexFieldsModelSerializer):
+#     class Meta:
+#         model = ItemVenta
+#         fields = ["venta", "producto", "sub_total", "cantidad"]
+#         expandable_fields = {"venta": (VentaSerializer)}
 
 
 class NotaDeCreditoSerializer(serializers.ModelSerializer):
