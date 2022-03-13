@@ -23,7 +23,6 @@ class SocieSerializar(serializers.ModelSerializer):
         model = Socie
         fields = [
             "id",
-            # "nro_de_socie",
             "codigo",
             "apellido",
             "nombre",
@@ -44,41 +43,3 @@ class SocieSerializar(serializers.ModelSerializer):
         ]
         depth = 1
 
-
-# class ProveedorSerializer(serializers.ModelSerializer):
-#     productos = ProductoSerializer(source="proveedores", many=True, read_only=True)
-
-#     class Meta:
-#         model = Proveedor
-#         fields = [
-#             "id",
-#             "nombre",
-#             "apellido",
-#             "dni",
-#             "emprendimento",
-#             "descripcion",
-#             "email",
-#             "telefono",
-#             "domicilio",
-#             "codigo_postal",
-#             "tienda",
-#             "codigo",
-#             "productos",
-#         ]
-
-
-# class HumanesGeneralSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = SocioGeneral
-#         fields = [
-#             "id",
-#             "nombre",
-#             "apellido",
-#             "dni",
-#             "descripcion",
-#             "domicilio",
-#             "codigo_postal",
-#             "tienda",
-#             "codigo",
-#             #       "productos",
-#         ]

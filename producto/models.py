@@ -22,13 +22,6 @@ class UnidadDeMedida(models.Model):
 
 
 class Producto(models.Model):
-    # proveedor_id = models.ForeignKey(
-    #     Proveedor,
-    #     related_name="proveedores",
-    #     on_delete=models.CASCADE,
-    #     null=True,
-    #     blank=True,
-    # )
     socie = models.ForeignKey(
         Socie,
         related_name="socie",
@@ -51,8 +44,7 @@ class Producto(models.Model):
         blank=True,
     )
     precio = models.DecimalField(max_digits=9, decimal_places=2)
-    # (through=TipoDeProducto)
-    tipo = TaggableManager(through=TipoDeProducto, related_name="tipos")
+    tipo = TaggableManager()
     fecha_creacion = models.DateTimeField(auto_now_add=True)
     cantidad_vendida = models.IntegerField(default=0, null=True)
 
@@ -68,12 +60,6 @@ class Producto(models.Model):
             return nombre
         else:
             return {}
-
-    # def proveedor(self):
-    #     if self.proveedor_id is not None:
-    #         return self.proveedor_id.id
-    #     else:
-    #         return {}
 
     def nombre_producto(self):
         if self.tipo is not None:
