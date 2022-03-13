@@ -51,24 +51,6 @@ class VentaViewSet(viewsets.ModelViewSet):
         mensaje_respuesta = {"mensaje:" "Se Borró la venta"}
         return Response(mensaje_respuesta)
 
-    # def create(self, request, *args, **kwargs):
-    #     venta_data = request.data
-
-    #     nueva_venta = Venta.objects.create(
-    #         cajere=Venta.objects.get(id=venta_data["cajere"]),
-    #         socie_humane=Venta.objects.get(id=venta_data["socioPleno"]),
-    #         socie_general=Venta.objects.get(id=venta_data["socioGeneral"]),
-    #         tipo_de_venta=venta_data["tipo_de_venta"],
-    #         forma_de_pago=venta_data["forma_de_pago"],
-    #         bonificacion=venta_data["bonificacion"],
-    #         monto_pago=venta_data["monto_pago"],
-    #     )
-
-    #     nueva_venta.save()
-
-    #     serializer = VentaSerializer(nueva_venta)
-    #     return Response(serializer.data)
-
 
 class ItemVentaViewSet(viewsets.ModelViewSet):
     """
@@ -96,22 +78,6 @@ class ItemVentaViewSet(viewsets.ModelViewSet):
         item.delete()
         mensaje_respuesta = {"mensaje:" "Se Borró el item cargado"}
         return Response(mensaje_respuesta)
-
-    # def create(self, request, *args, **kwargs):
-    #     items_data = request.data
-
-    #     nuevo_item = ItemVenta.objects.create(
-    #         venta=ItemVenta.objects.get(id=items_data["venta"]),
-    #         producto=ItemVenta.objects.get(id=items_data["producto"]),
-    #         cantidad=items_data["cantidad"],
-    #         sub_total=items_data["sub_total"],
-    #     )
-
-    #     nuevo_item.save()
-
-    #     serializer = ItemVentaSerializer(nuevo_item)
-    #     return Response(serializer.data)
-
 
 class NotaDeCreditoViewSet(viewsets.ModelViewSet):
     """

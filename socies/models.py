@@ -33,7 +33,6 @@ class TipoDeSocio(models.Model):
 
 
 class Socie(models.Model):
-    # nro_de_socie = models.IntegerField(default=0, editable=False)
     codigo = models.CharField(
         max_length=10,
         blank=True,
@@ -61,9 +60,6 @@ class Socie(models.Model):
         null=True,
         blank=True,
     )
-    # categoria = models.ForeignKey(
-    #     TipoDeSocio, related_name="socio_tipo", on_delete=models.CASCADE
-    # )
     emprendimiento = models.CharField(max_length=50, blank=True, null=True)
     descripcion = models.TextField(
         blank=True,
@@ -86,55 +82,8 @@ class Socie(models.Model):
     activo = models.BooleanField(default=False)
     proveedor = models.BooleanField(default=False, null=True, blank=True)
     adherente = models.BooleanField(default=True)
-    # tiendas = models.ManyToManyField(Tienda, blank=False, related_name="tienda")
-
-    # class Meta:
-    #     abstract = True
-
-    # def __init__(self):
-    #     self.fields["activo"].iniial = True
-
     def __str__(self):
         return self.nombre
 
     class Meta:
         ordering = ("id",)
-
-    # def save(self, *args, **kwargs):
-    #     self.nro_de_socie = Socie.objects.all().count() + 1
-    #     super(Socie, self).save()
-
-
-# class Proveedor(Humane):
-#     emprendimento = models.CharField(max_length=50, blank=True, null=True)
-#     tienda = models.CharField(max_length=50)
-#     codigo = models.IntegerField()
-
-#     def __str__(self):
-#         return self.nombre
-
-#     class Meta:
-#         ordering = ("codigo",)
-
-
-# class SocioPleno(Humane):
-#     emprendimento = models.CharField(max_length=50, blank=True, null=True)
-#     tienda = models.CharField(max_length=50)
-#     codigo = models.IntegerField()
-
-#     def __str__(self):
-#         return self.nombre
-
-#     class Meta:
-#         ordering = ("codigo",)
-
-
-# class SocioGeneral(Humane):
-#     tienda = models.CharField(max_length=50)
-#     codigo = models.IntegerField()
-
-#     def __str__(self):
-#         return self.nombre
-
-#     class Meta:
-#         ordering = ("codigo",)

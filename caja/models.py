@@ -23,13 +23,7 @@ class Venta(models.Model):
         null=True,
         blank=True,
     )
-    # socie_general = models.ForeignKey(
-    #     SocioGeneral,
-    #     related_name="socioGeneral",
-    #     on_delete=models.PROTECT,
-    #     null=True,
-    #     blank=True,
-    # )
+
     tipo_de_venta = models.CharField(max_length=7, choices=tipos_de_venta, null=True)
     formas_de_pago = [
         ("Efectivo", "Efectivo"),
@@ -61,40 +55,6 @@ class Venta(models.Model):
     def __str__(self):
         return 'cliente "%s" nro venta "%s"' % (self.socie, self.id)
 
-    # def set_bonificacion(self):
-    #     if self.tipo_de_venta != "Humane":
-    #         self.bonificacion = 0
-    #         return self.bonificacion
-    #     else:
-    #         self.bonificacion = 20
-    #         return self.bonificacion
-
-    # def set_recargo(self):
-    #     if self.forma_de_pago == "Tarjeta" or self.forma_de_pago == "Mercado Pago":
-    #         self.recargo = 10
-    #         return self.recargo
-    #     else:
-    #         self.recargo = 0
-    #         return self.recargo
-
-    # def get_monto_total(self):
-    #     items_vendidos = Venta.objects.get(id=self.id).items.all()
-    #     total_ventas = 0
-    #     for e in items_vendidos:
-    #         total_ventas += e.parcial
-    #     # self.set_bonificacion()
-    #     self.set_recargo()
-    #     bonificacion = total_ventas * (self.bonificacion / Decimal(100))
-    #     recargo = total_ventas * (self.recargo / Decimal(100))
-    #     self.monto_total = total_ventas - bonificacion + recargo
-    #     return total_ventas
-
-    # def save(self, *args, **kwargs):
-    #     if Venta.objects.filter(id=self.id).exists():
-    #         self.get_monto_total()
-    #     super(Venta, self).save(*args, **kwargs)
-
-
 class ItemVenta(models.Model):
     venta = models.ForeignKey(Venta, related_name="items", on_delete=models.CASCADE)
     producto = models.ForeignKey(
@@ -108,26 +68,6 @@ class ItemVenta(models.Model):
 
     def __str__(self):
         return "venta %s prducto %s item %s" % (self.venta.id, self.producto, self.id)
-
-    # @property
-    # def parcial(self):
-    #     return self.cantidad * self.producto.precio
-
-    # def get_cantidad(self):
-    #      cantidad = self.cantidad
-    #      return cantidad
-
-    # def actualizar_monto_venta(self):
-    #     ventas = ItemVenta.objects.filter(venta=self.venta)
-    #     for i in ventas:
-    #         i.venta.get_monto_total()
-
-    # def save(self, *args, **kwargs):
-    #     precio_unitario = self.producto.precio
-    #     self.parcial = self.producto.precio * self.cantidad
-    #     # self.actualizar_monto_venta()
-    #     super(ItemVenta, self).save(*args, **kwargs)
-
 
 class NotaCredito(models.Model):
     tipo_de_salida = [
